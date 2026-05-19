@@ -105,6 +105,17 @@
         color: #fff;
       }
 
+      .nav a:focus-visible,
+      .brand:focus-visible,
+      .button:focus-visible,
+      .language-switch button:focus-visible,
+      .instagram-feed a:focus-visible,
+      .info-box a:focus-visible,
+      .mascot:focus-visible {
+        outline: 3px solid rgba(216, 165, 52, 0.88);
+        outline-offset: 4px;
+      }
+
       .language-switch {
         display: flex;
         align-items: center;
@@ -144,6 +155,7 @@
         background: linear-gradient(135deg, #df78ad, #e84f9d 48%, #d8a534);
         color: #fff;
         font-weight: 800;
+        white-space: nowrap;
         box-shadow: 0 12px 28px rgba(223, 120, 173, 0.36);
         transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
       }
@@ -178,7 +190,9 @@
         position: absolute;
         inset: 0;
         z-index: 1;
-        background: linear-gradient(90deg, rgba(23, 16, 20, 0.9) 0%, rgba(125, 47, 97, 0.66) 45%, rgba(223, 120, 173, 0.18) 100%);
+        background:
+          linear-gradient(90deg, rgba(23, 16, 20, 0.9) 0%, rgba(125, 47, 97, 0.64) 44%, rgba(223, 120, 173, 0.12) 100%),
+          linear-gradient(0deg, rgba(23, 16, 20, 0.72) 0%, rgba(23, 16, 20, 0) 38%);
         pointer-events: none;
       }
 
@@ -396,24 +410,32 @@
 
       .instagram-feed {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
       }
 
       .instagram-feed a {
         display: block;
+        aspect-ratio: 4 / 5;
         overflow: hidden;
         border: 1px solid rgba(223, 120, 173, 0.22);
         border-radius: 8px;
         background: var(--vanilla);
         box-shadow: 0 14px 34px rgba(125, 47, 97, 0.12);
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
       }
 
       .instagram-feed img {
         width: 100%;
-        height: clamp(210px, 22vw, 320px);
+        height: 100%;
         object-fit: cover;
         transition: transform 180ms ease;
+      }
+
+      .instagram-feed a:hover {
+        border-color: rgba(216, 165, 52, 0.72);
+        box-shadow: 0 18px 44px rgba(125, 47, 97, 0.2);
+        transform: translateY(-3px);
       }
 
       .instagram-feed a:hover img {
@@ -664,6 +686,11 @@
           padding-bottom: 190px;
         }
 
+        .hero::after {
+          background:
+            linear-gradient(180deg, rgba(23, 16, 20, 0.88) 0%, rgba(125, 47, 97, 0.64) 48%, rgba(23, 16, 20, 0.74) 100%);
+        }
+
         .hero-facts {
           left: 18px;
           right: 18px;
@@ -688,9 +715,12 @@
 
         .menu-grid,
         .info-grid,
-        .cake-showcase,
-        .instagram-feed {
+        .cake-showcase {
           grid-template-columns: 1fr;
+        }
+
+        .instagram-feed {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .cake-showcase img:nth-child(2) {
@@ -750,6 +780,10 @@
         .cta-box .button {
           width: 100%;
         }
+
+        .instagram-feed {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -757,6 +791,7 @@
         .mascot,
         .mascot-shell,
         .button,
+        .instagram-feed a,
         .instagram-feed img {
           animation: none;
           transition: none;
@@ -772,14 +807,14 @@
       </a>
       <nav class="nav" aria-label="Main navigation">
         <a href="#menu" data-i18n="nav.menu">Menu</a>
-        <a href="#instagram" data-i18n="nav.instagram">Instagram</a>
+        <a href="#instagram" data-i18n="nav.instagram">Redes</a>
         <a href="#avis" data-i18n="nav.process">Proceso</a>
         <a href="#infos" data-i18n="nav.info">Info</a>
       </nav>
       <div class="language-switch" aria-label="Language selector">
-        <button class="active" type="button" data-lang="es">ES</button>
-        <button type="button" data-lang="fr">FR</button>
-        <button type="button" data-lang="en">EN</button>
+        <button class="active" type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
       <a class="button" href="https://www.instagram.com/chezgateaux/" data-i18n="cta.dm">Pedir por DM</a>
     </header>
@@ -787,12 +822,12 @@
     <main id="top">
       <section class="hero" aria-label="Chez Gâteaux">
         <div class="hero-slides" aria-hidden="true">
-          <img class="hero-slide active" src="assets/web-cake-01.jpg" alt="">
-          <img class="hero-slide" src="assets/web-cake-02.jpg" alt="">
-          <img class="hero-slide" src="assets/web-cake-03.jpg" alt="">
-          <img class="hero-slide" src="assets/web-cake-04.jpg" alt="">
-          <img class="hero-slide" src="assets/web-cake-05.jpg" alt="">
-          <img class="hero-slide" src="assets/web-cake-06.jpg" alt="">
+          <img class="hero-slide active" src="assets/web-cake-01.jpg" alt="" fetchpriority="high" decoding="async">
+          <img class="hero-slide" src="assets/web-cake-02.jpg" alt="" loading="lazy" decoding="async">
+          <img class="hero-slide" src="assets/web-cake-03.jpg" alt="" loading="lazy" decoding="async">
+          <img class="hero-slide" src="assets/web-cake-04.jpg" alt="" loading="lazy" decoding="async">
+          <img class="hero-slide" src="assets/web-cake-05.jpg" alt="" loading="lazy" decoding="async">
+          <img class="hero-slide" src="assets/web-cake-06.jpg" alt="" loading="lazy" decoding="async">
         </div>
         <div class="hero-content">
           <p class="eyebrow" data-i18n="hero.eyebrow">Tortas temáticas en Québec</p>
@@ -868,9 +903,9 @@
           </div>
 
           <div class="cake-showcase" aria-label="Pasteles personalizados de Chez Gâteaux">
-            <img src="assets/web-cake-01.jpg" alt="Pastel temático elaborado de Chez Gâteaux">
-            <img src="assets/web-cake-02.jpg" alt="Pastel personalizado con decoración compleja">
-            <img src="assets/web-cake-03.jpg" alt="Pastel de celebración hecho a pedido">
+            <img src="assets/web-cake-01.jpg" alt="Pastel temático elaborado de Chez Gâteaux" loading="lazy" decoding="async">
+            <img src="assets/web-cake-02.jpg" alt="Pastel personalizado con decoración compleja" loading="lazy" decoding="async">
+            <img src="assets/web-cake-03.jpg" alt="Pastel de celebración hecho a pedido" loading="lazy" decoding="async">
           </div>
         </div>
       </section>
@@ -889,31 +924,31 @@
 
           <div class="instagram-feed">
             <a href="https://www.instagram.com/p/DWzoyDPAVgV/">
-              <img src="assets/latest-post-01.jpg" alt="Último post de Instagram de Chez Gâteaux">
+              <img src="assets/latest-post-01.jpg" alt="Último post de Instagram de Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DWzovwYgUlm/">
-              <img src="assets/latest-post-02.jpg" alt="Post reciente de Instagram de Chez Gâteaux">
+              <img src="assets/latest-post-02.jpg" alt="Post reciente de Instagram de Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DWzoP-5Af9S/">
-              <img src="assets/latest-post-03.jpg" alt="Foto reciente de Instagram de Chez Gâteaux">
+              <img src="assets/latest-post-03.jpg" alt="Foto reciente de Instagram de Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DTiveT1gYMz/">
-              <img src="assets/latest-post-04.jpg" alt="Carrusel reciente de Instagram de Chez Gâteaux">
+              <img src="assets/latest-post-04.jpg" alt="Carrusel reciente de Instagram de Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DTivXHGgcoY/">
-              <img src="assets/latest-post-05.jpg" alt="Post reciente de Chez Gâteaux">
+              <img src="assets/latest-post-05.jpg" alt="Post reciente de Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DTiuueNgXcQ/">
-              <img src="assets/latest-post-06.jpg" alt="Publicación reciente de Chez Gâteaux">
+              <img src="assets/latest-post-06.jpg" alt="Publicación reciente de Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DTiupt3AR9d/">
-              <img src="assets/latest-post-07.jpg" alt="Foto reciente publicada por Chez Gâteaux">
+              <img src="assets/latest-post-07.jpg" alt="Foto reciente publicada por Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DTiumkjgZvV/">
-              <img src="assets/latest-post-08.jpg" alt="Diseño reciente publicado por Chez Gâteaux">
+              <img src="assets/latest-post-08.jpg" alt="Diseño reciente publicado por Chez Gâteaux" loading="lazy" decoding="async">
             </a>
             <a href="https://www.instagram.com/p/DTiuZ8jAaHH/">
-              <img src="assets/latest-post-09.jpg" alt="Post reciente del perfil de Chez Gâteaux">
+              <img src="assets/latest-post-09.jpg" alt="Post reciente del perfil de Chez Gâteaux" loading="lazy" decoding="async">
             </a>
           </div>
         </div>
@@ -925,6 +960,8 @@
             <img
               src="assets/web-cake-02.jpg"
               alt="Torta temática personalizada de Chez Gâteaux"
+              loading="lazy"
+              decoding="async"
             >
           </div>
           <div>
@@ -1012,7 +1049,7 @@
           metaTitle: "Chez Gâteaux | Tortas temáticas en Québec",
           metaDescription: "Chez Gâteaux en Québec crea tortas temáticas para toda ocasión. Cuéntanos tu idea por DM y la convertimos en un pastel personalizado.",
           "nav.menu": "Menu",
-          "nav.instagram": "Instagram",
+          "nav.instagram": "Redes",
           "nav.process": "Proceso",
           "nav.info": "Info",
           "cta.dm": "Pedir por DM",
@@ -1073,7 +1110,7 @@
           metaTitle: "Chez Gâteaux | Gâteaux thématiques à Québec",
           metaDescription: "Chez Gâteaux à Québec crée des gâteaux thématiques pour toutes les occasions. Envoyez votre idée par DM et nous la transformons en gâteau personnalisé.",
           "nav.menu": "Menu",
-          "nav.instagram": "Instagram",
+          "nav.instagram": "Réseaux",
           "nav.process": "Processus",
           "nav.info": "Infos",
           "cta.dm": "Commander par DM",
@@ -1134,7 +1171,7 @@
           metaTitle: "Chez Gâteaux | Custom Themed Cakes in Québec",
           metaDescription: "Chez Gâteaux in Québec creates custom themed cakes for every occasion. Send your idea by DM and turn it into a personalized cake.",
           "nav.menu": "Menu",
-          "nav.instagram": "Instagram",
+          "nav.instagram": "Social",
           "nav.process": "Process",
           "nav.info": "Info",
           "cta.dm": "Order by DM",
@@ -1208,6 +1245,7 @@
         });
         document.querySelectorAll("[data-lang]").forEach((button) => {
           button.classList.toggle("active", button.getAttribute("data-lang") === lang);
+          button.setAttribute("aria-pressed", button.getAttribute("data-lang") === lang ? "true" : "false");
         });
       }
 
