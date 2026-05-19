@@ -425,21 +425,62 @@
         right: clamp(14px, 3vw, 34px);
         bottom: clamp(16px, 4vw, 34px);
         z-index: 30;
-        width: clamp(74px, 9vw, 118px);
-        height: clamp(74px, 9vw, 118px);
-        border: 2px solid rgba(216, 165, 52, 0.7);
-        border-radius: 50%;
-        background: rgba(255, 248, 252, 0.92);
-        box-shadow: 0 18px 46px rgba(125, 47, 97, 0.24);
-        pointer-events: none;
-        animation: mascotFloat 8s ease-in-out infinite;
+        width: clamp(108px, 13vw, 168px);
+        height: clamp(146px, 17vw, 226px);
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        pointer-events: auto;
       }
 
-      .mascot img {
+      .mascot-shell {
+        position: relative;
         width: 100%;
         height: 100%;
-        object-fit: contain;
-        padding: 10px;
+        animation: mascotFloat 8s ease-in-out infinite;
+        transform-origin: center bottom;
+      }
+
+      .mascot-video {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border: 2px solid rgba(216, 165, 52, 0.68);
+        border-radius: 28px;
+        object-fit: cover;
+        box-shadow: 0 22px 52px rgba(125, 47, 97, 0.28);
+        background: #ffd7e7;
+      }
+
+      .mascot-bubble {
+        position: absolute;
+        right: 68%;
+        top: 12%;
+        min-width: 96px;
+        padding: 9px 12px;
+        border: 1px solid rgba(216, 165, 52, 0.52);
+        border-radius: 999px;
+        background: rgba(255, 248, 252, 0.96);
+        color: var(--cocoa);
+        box-shadow: 0 14px 34px rgba(125, 47, 97, 0.18);
+        font-size: 0.86rem;
+        font-weight: 900;
+        opacity: 0;
+        transform: translate3d(10px, 8px, 0) scale(0.96);
+        transition: opacity 180ms ease, transform 180ms ease;
+        white-space: nowrap;
+      }
+
+      .mascot:hover .mascot-bubble,
+      .mascot:focus-visible .mascot-bubble,
+      .mascot.is-dancing .mascot-bubble {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      .mascot.is-dancing .mascot-shell {
+        animation: mascotDance 1.15s ease-in-out 1, mascotFloat 8s ease-in-out 1.15s infinite;
       }
 
       @keyframes mascotFloat {
@@ -458,6 +499,25 @@
 
         75% {
           transform: translate3d(-8px, -24px, 0) rotate(5deg);
+        }
+      }
+
+      @keyframes mascotDance {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) rotate(-3deg) scale(1);
+        }
+
+        25% {
+          transform: translate3d(-10px, -18px, 0) rotate(8deg) scale(1.05);
+        }
+
+        50% {
+          transform: translate3d(8px, -8px, 0) rotate(-7deg) scale(1.03);
+        }
+
+        75% {
+          transform: translate3d(-6px, -22px, 0) rotate(6deg) scale(1.06);
         }
       }
 
@@ -643,9 +703,13 @@
         }
 
         .mascot {
-          width: 68px;
-          height: 68px;
+          width: 88px;
+          height: 120px;
           opacity: 0.92;
+        }
+
+        .mascot-bubble {
+          display: none;
         }
       }
 
@@ -691,6 +755,7 @@
       @media (prefers-reduced-motion: reduce) {
         .hero-slide,
         .mascot,
+        .mascot-shell,
         .button,
         .instagram-feed img {
           animation: none;
@@ -955,9 +1020,14 @@
       <span>Chez Gâteaux, Québec</span>
       <span data-i18n="footer.note">Página vitrina lista para revisar, personalizar y publicar cuando decidas.</span>
     </footer>
-    <div class="mascot" aria-hidden="true">
-      <img src="assets/logo-chez-gateaux.png" alt="">
-    </div>
+    <button class="mascot" type="button" aria-label="Mascota Chez Gâteaux">
+      <span class="mascot-shell">
+        <video class="mascot-video" autoplay muted loop playsinline poster="assets/mascot-poster.png">
+          <source src="assets/mascot-cupcake.mp4" type="video/mp4">
+        </video>
+        <span class="mascot-bubble" data-i18n="mascot.bubble">¿Torta?</span>
+      </span>
+    </button>
     <script>
       const translations = {
         es: {
@@ -1018,6 +1088,7 @@
           "final.eyebrow": "Tu próxima celebración",
           "final.title": "Empieza con una idea. Chez Gâteaux se encarga de convertirla en torta.",
           "final.copy": "Manda la temática, fecha y número de personas por DM para recibir orientación y disponibilidad.",
+          "mascot.bubble": "¿Torta?",
           "footer.note": "Página vitrina lista para revisar, personalizar y publicar cuando decidas."
         },
         fr: {
@@ -1078,6 +1149,7 @@
           "final.eyebrow": "Votre prochaine célébration",
           "final.title": "Commencez par une idée. Chez Gâteaux la transforme en gâteau.",
           "final.copy": "Envoyez le thème, la date et le nombre de personnes par DM pour recevoir les disponibilités et les prochaines étapes.",
+          "mascot.bubble": "Gâteau?",
           "footer.note": "Page vitrine prête à réviser, personnaliser et publier quand vous décidez."
         },
         en: {
@@ -1138,6 +1210,7 @@
           "final.eyebrow": "Your next celebration",
           "final.title": "Start with an idea. Chez Gâteaux turns it into cake.",
           "final.copy": "Send the theme, date, and number of guests by DM to get availability and next steps.",
+          "mascot.bubble": "Cake?",
           "footer.note": "Draft landing page ready to review, customize, and publish when you decide."
         }
       };
@@ -1173,6 +1246,21 @@
           activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
           heroSlides[activeHeroSlide].classList.add("active");
         }, 5000);
+      }
+
+      const mascot = document.querySelector(".mascot");
+
+      if (mascot) {
+        const mascotVideo = mascot.querySelector("video");
+
+        mascot.addEventListener("click", () => {
+          mascot.classList.add("is-dancing");
+          if (mascotVideo) {
+            mascotVideo.currentTime = 0;
+            mascotVideo.play().catch(() => {});
+          }
+          window.setTimeout(() => mascot.classList.remove("is-dancing"), 1400);
+        });
       }
     </script>
   </body>
