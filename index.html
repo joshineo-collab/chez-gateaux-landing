@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chez Gâteaux | Tortas temáticas en Québec</title>
+    <meta
+      name="description"
+      content="Chez Gâteaux en Québec crea tortas temáticas para toda ocasión. Cuéntanos tu idea por DM y la convertimos en un pastel personalizado."
+    >
+    <meta property="og:title" content="Chez Gâteaux | Tortas temáticas en Québec">
+    <meta
+      property="og:description"
+      content="Tortas temáticas para cumpleaños, celebraciones y momentos especiales. Pedidos por DM en Instagram."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/660135795_18096283964101987_7841187236513917613_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_Srn9rRspNYQ7kNvwGYgwFi&_nc_oc=Adp5prHvEBYZ54IkoXJXgWUW7hcxFsPdSv7vBXOp97RpNpGT7OJVw2bBSPjsxTShibs&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQGJr2MCLojVNQDSQNQOIVZe-fdLZ1VDAHroEsteY7FywwJEu8x_VDt8NaQ1dnRvrkrpoARbQJ8T&oh=00_Af4q2q5mQOzFkXoq2KCrezvQ-lAV4gIKj-1DWWM5J4JMsw&oe=6A1164E5">
+    <link rel="preconnect" href="https://scontent-iad6-1.cdninstagram.com">
+    <link rel="preconnect" href="https://scontent-iad3-1.cdninstagram.com">
+    <style>
+      :root {
+        --cream: #fff9f4;
+        --vanilla: #ffe6b8;
+        --cocoa: #241816;
+        --coffee: #5d342c;
+        --guava: #c83f61;
+        --mint: #6fae9d;
+        --gold: #d9a441;
+        --ink: #201717;
+        --muted: #75615b;
+        --line: rgba(36, 24, 22, 0.14);
+        --shadow: 0 24px 70px rgba(77, 35, 50, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--cream);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 14px clamp(18px, 4vw, 54px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(36, 24, 22, 0.9);
+        color: #fffaf3;
+        backdrop-filter: blur(16px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--vanilla), var(--gold));
+        color: var(--cocoa);
+        font-weight: 900;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: rgba(255, 250, 243, 0.82);
+        font-size: 0.95rem;
+      }
+
+      .nav a:hover {
+        color: #fff;
+      }
+
+      .language-switch {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid rgba(255, 250, 243, 0.22);
+        border-radius: 999px;
+        background: rgba(255, 250, 243, 0.08);
+      }
+
+      .language-switch button {
+        min-width: 38px;
+        min-height: 32px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: rgba(255, 250, 243, 0.78);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .language-switch button.active {
+        background: #fffaf3;
+        color: var(--cocoa);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #d94e74, var(--guava));
+        color: #fff;
+        font-weight: 800;
+        box-shadow: 0 12px 28px rgba(200, 63, 97, 0.3);
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: #aa2f4f;
+        box-shadow: 0 16px 34px rgba(200, 63, 97, 0.36);
+      }
+
+      .button.secondary {
+        border-color: var(--line);
+        background: #fffaf3;
+        color: var(--cocoa);
+        box-shadow: none;
+      }
+
+      .hero {
+        position: relative;
+        min-height: calc(100vh - 63px);
+        display: grid;
+        align-items: end;
+        padding: clamp(42px, 8vw, 96px) clamp(18px, 4vw, 54px);
+        overflow: hidden;
+        color: #fffaf3;
+        background:
+          linear-gradient(90deg, rgba(32, 23, 23, 0.88) 0%, rgba(93, 52, 44, 0.66) 45%, rgba(111, 174, 157, 0.16) 100%),
+          url("https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/660135795_18096283964101987_7841187236513917613_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_Srn9rRspNYQ7kNvwGYgwFi&_nc_oc=Adp5prHvEBYZ54IkoXJXgWUW7hcxFsPdSv7vBXOp97RpNpGT7OJVw2bBSPjsxTShibs&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQGJr2MCLojVNQDSQNQOIVZe-fdLZ1VDAHroEsteY7FywwJEu8x_VDt8NaQ1dnRvrkrpoARbQJ8T&oh=00_Af4q2q5mQOzFkXoq2KCrezvQ-lAV4gIKj-1DWWM5J4JMsw&oe=6A1164E5") center / cover;
+      }
+
+      .hero-content {
+        width: min(760px, 100%);
+        padding-bottom: clamp(24px, 7vh, 74px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        color: var(--vanilla);
+        font-size: 0.84rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 11ch;
+        margin-bottom: 20px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(4rem, 12vw, 9rem);
+        line-height: 0.86;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 650px;
+        margin-bottom: 28px;
+        color: rgba(255, 250, 243, 0.92);
+        font-size: clamp(1.05rem, 2.4vw, 1.38rem);
+      }
+
+      .hero-actions,
+      .section-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero-facts {
+        position: absolute;
+        right: clamp(18px, 4vw, 54px);
+        bottom: 26px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(120px, 1fr));
+        width: min(620px, calc(100% - 36px));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(36, 24, 22, 0.66);
+        backdrop-filter: blur(18px);
+      }
+
+      .fact {
+        padding: 18px;
+        border-right: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .fact:last-child {
+        border-right: 0;
+      }
+
+      .fact strong {
+        display: block;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .fact span {
+        display: block;
+        color: rgba(255, 250, 243, 0.76);
+        font-size: 0.86rem;
+      }
+
+      section {
+        padding: clamp(58px, 8vw, 108px) clamp(18px, 4vw, 54px);
+      }
+
+      .section-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+        gap: 36px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        margin-bottom: 12px;
+        color: var(--cocoa);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.3rem, 5vw, 4.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .menu-card {
+        min-height: 280px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffaf3;
+        box-shadow: 0 14px 42px rgba(47, 33, 28, 0.07);
+      }
+
+      .menu-card.featured {
+        background: var(--cocoa);
+        color: #fffaf3;
+      }
+
+      .menu-card .tag {
+        display: inline-flex;
+        margin-bottom: 28px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(111, 174, 157, 0.18);
+        color: var(--coffee);
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .menu-card.featured .tag {
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--vanilla);
+      }
+
+      .menu-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        line-height: 1.08;
+      }
+
+      .menu-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .menu-card.featured p {
+        color: rgba(255, 250, 243, 0.76);
+      }
+
+      .split {
+        background: #fffaf3;
+      }
+
+      .split-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+        gap: clamp(26px, 5vw, 68px);
+        align-items: center;
+      }
+
+      .photo-panel {
+        position: relative;
+        min-height: 560px;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        background: var(--vanilla);
+      }
+
+      .photo-panel img {
+        width: 100%;
+        height: 100%;
+        min-height: 560px;
+        object-fit: cover;
+      }
+
+      .quote {
+        margin: 0;
+        padding: 28px;
+        border-left: 5px solid var(--mint);
+        background: var(--cream);
+        color: var(--cocoa);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.5rem, 3vw, 2.4rem);
+        line-height: 1.15;
+      }
+
+      .quote cite {
+        display: block;
+        margin-top: 18px;
+        color: var(--muted);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.92rem;
+        font-style: normal;
+      }
+
+      .info-band {
+        background: var(--cocoa);
+        color: #fffaf3;
+      }
+
+      .info-band h2 {
+        color: #fffaf3;
+      }
+
+      .info-band .lead {
+        color: rgba(255, 250, 243, 0.78);
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .info-box {
+        min-height: 250px;
+        padding: 26px;
+        background: rgba(255, 250, 243, 0.06);
+      }
+
+      .info-box h3 {
+        margin-bottom: 16px;
+        color: var(--vanilla);
+        font-size: 1.05rem;
+        text-transform: uppercase;
+      }
+
+      .info-box p,
+      .info-box li {
+        color: rgba(255, 250, 243, 0.8);
+      }
+
+      .info-box ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .final-cta {
+        background:
+          linear-gradient(90deg, rgba(255, 249, 244, 0.98), rgba(255, 249, 244, 0.88)),
+          url("https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/660688511_18096283766101987_4952185329113916519_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=WRoaR4FtN8QQ7kNvwEw6dTi&_nc_oc=AdpkfglcxlWnj99xpfSrDWJ-ChyMaWNZbPOhriaBE0627IfT72_ONyzf6gUgYC34qQI&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQFmXiRS4f6izzTHU7mx19I-YK4_QdW-1btcet08mRIxa2nb7hJBiwQo_0mzADZbAdnvZ4qP1-gJ&oh=00_Af409zSu3__upknfNLXUxvcjl1INlVUD9bdjC8s8e4qzRg&oe=6A116ABB") center / cover;
+      }
+
+      .cta-box {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+        padding: clamp(28px, 5vw, 58px);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 250, 243, 0.9);
+        box-shadow: var(--shadow);
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 28px clamp(18px, 4vw, 54px);
+        background: #1c1613;
+        color: rgba(255, 250, 243, 0.72);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          display: none;
+        }
+
+        .hero {
+          min-height: 780px;
+          align-items: start;
+          padding-top: 58px;
+          background-position: 58% center;
+        }
+
+        .hero-content {
+          padding-bottom: 190px;
+        }
+
+        .hero-facts {
+          left: 18px;
+          right: 18px;
+          grid-template-columns: 1fr;
+          width: auto;
+        }
+
+        .fact {
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .fact:last-child {
+          border-bottom: 0;
+        }
+
+        .section-head,
+        .split-grid,
+        .cta-box {
+          grid-template-columns: 1fr;
+        }
+
+        .menu-grid,
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .photo-panel,
+        .photo-panel img {
+          min-height: 380px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .topbar {
+          padding: 12px 16px;
+        }
+
+        .brand span:last-child {
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .topbar .button {
+          min-height: 40px;
+          padding: 0 13px;
+          font-size: 0.88rem;
+        }
+
+        .language-switch {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+        }
+
+        h1 {
+          font-size: clamp(3.4rem, 18vw, 5rem);
+        }
+
+        .hero-copy {
+          font-size: 1rem;
+        }
+
+        .hero-actions .button,
+        .section-actions .button,
+        .cta-box .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Chez Gâteaux">
+        <span class="brand-mark">CG</span>
+        <span>Chez Gâteaux</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#menu" data-i18n="nav.menu">Menu</a>
+        <a href="#avis" data-i18n="nav.process">Proceso</a>
+        <a href="#infos" data-i18n="nav.info">Info</a>
+      </nav>
+      <div class="language-switch" aria-label="Language selector">
+        <button class="active" type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="button" href="https://www.instagram.com/chezgateaux/" data-i18n="cta.dm">Pedir por DM</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Chez Gâteaux">
+        <div class="hero-content">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Tortas temáticas en Québec</p>
+          <h1>Chez Gâteaux</h1>
+          <p class="hero-copy" data-i18n="hero.copy">
+            Cuéntanos tu idea y la convertimos en una torta personalizada para cumpleaños, celebraciones y momentos especiales.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="https://www.instagram.com/chezgateaux/" data-i18n="cta.dm">Pedir por DM</a>
+            <a class="button secondary" href="https://www.ubereats.com/ca/store/chez-gateaux/HcDJucqoQEyN5vtEavyflw" data-i18n="cta.menu">Ver menú</a>
+          </div>
+        </div>
+
+        <div class="hero-facts" aria-label="Highlights">
+          <div class="fact">
+            <strong>7.4k+</strong>
+            <span data-i18n="facts.followers">Seguidores en Instagram</span>
+          </div>
+          <div class="fact">
+            <strong>1.5k+</strong>
+            <span data-i18n="facts.posts">Publicaciones de tortas y postres</span>
+          </div>
+          <div class="fact">
+            <strong>Québec</strong>
+            <span data-i18n="facts.custom">Pedidos personalizados</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow" style="color: var(--guava)" data-i18n="offer.eyebrow">Favoritos</p>
+              <h2 data-i18n="offer.title">Tortas hechas a tu idea, no a una plantilla.</h2>
+            </div>
+            <p class="lead" data-i18n="offer.copy">
+              El punto fuerte de Chez Gâteaux son las tortas temáticas para toda ocasión. También puedes encontrar postres, cafés y opciones de vitrina según disponibilidad.
+            </p>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-card featured">
+              <span class="tag" data-i18n="card1.tag">A pedido</span>
+              <h3 data-i18n="card1.title">Tortas temáticas</h3>
+              <p data-i18n="card1.copy">Pasteles personalizados para cumpleaños, fechas especiales, personajes, colores y conceptos únicos.</p>
+            </article>
+            <article class="menu-card">
+              <span class="tag" data-i18n="card2.tag">Tu idea</span>
+              <h3 data-i18n="card2.title">Diseños personalizados</h3>
+              <p data-i18n="card2.copy">Comparte una referencia, una temática o una ocasión; el diseño se adapta a lo que quieres celebrar.</p>
+            </article>
+            <article class="menu-card">
+              <span class="tag" data-i18n="card3.tag">Celebraciones</span>
+              <h3 data-i18n="card3.title">Para toda ocasión</h3>
+              <p data-i18n="card3.copy">Cumpleaños, aniversarios, reuniones familiares, eventos infantiles y momentos especiales.</p>
+            </article>
+            <article class="menu-card">
+              <span class="tag" data-i18n="card4.tag">Postres</span>
+              <h3 data-i18n="card4.title">Dulces de vitrina</h3>
+              <p data-i18n="card4.copy">Tres leches, mousse de fruta de la pasión y otros postres disponibles según el día.</p>
+            </article>
+            <article class="menu-card">
+              <span class="tag" data-i18n="card5.tag">Salado</span>
+              <h3 data-i18n="card5.title">Antojos colombianos</h3>
+              <p data-i18n="card5.copy">Buñuelos, panes, empanadas y opciones saladas para acompañar el café o llevar.</p>
+            </article>
+            <article class="menu-card">
+              <span class="tag" data-i18n="card6.tag">Café</span>
+              <h3 data-i18n="card6.title">Café colombiano</h3>
+              <p data-i18n="card6.copy">Espresso, americano, latte, cappuccino y café filtrado para acompañar algo dulce.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="split" id="avis">
+        <div class="section-inner split-grid">
+          <div class="photo-panel">
+            <img
+              src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/660490816_18096283886101987_6164709813589812195_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Q_rSAHcDNP8Q7kNvwEP0-ii&_nc_oc=Adp7YqIeOMOqejNatkXG5BQ4NyLITwVjgbRLvfbdg_1DEhHsdKqYXw2toHBPqnG8_wQ&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQFL2Iq0qfTO0gFZBKzpxlTJJnY6rvMiHX0LVT3jFvxYYTMU8PZDuYQJV3T3IXuWLM9IhDBEINbJ&oh=00_Af7DxJs1Fg13lM9J592nWzJpWd5sWPQ6k-DlXK4cECBjtw&oe=6A11967B"
+              alt="Torta temática personalizada de Chez Gâteaux"
+            >
+          </div>
+          <div>
+            <p class="eyebrow" style="color: var(--guava)" data-i18n="process.eyebrow">Cómo funciona</p>
+            <h2 data-i18n="process.title">Envía tu idea, confirma los detalles y recibe una torta hecha para tu ocasión.</h2>
+            <blockquote class="quote">
+              <span data-i18n="process.quote">"Dites-nous votre idée, nous la réalisons."</span>
+              <cite data-i18n="process.cite">Promesa de Chez Gâteaux en Instagram</cite>
+            </blockquote>
+            <p class="lead" style="margin-top: 22px" data-i18n="process.copy">
+              Para cotizar mejor, manda por DM la fecha, cantidad de personas, temática, colores y una referencia visual si ya tienes una.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-band" id="infos">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow" data-i18n="info.eyebrow">Pedidos y ubicación</p>
+              <h2 data-i18n="info.title">Haz tu pedido por Instagram o visita Chez Gâteaux en Québec.</h2>
+            </div>
+            <p class="lead" data-i18n="info.copy">
+              Para tortas personalizadas, el canal principal es DM. Para productos disponibles al momento, revisa Instagram o la página de pedidos.
+            </p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <h3 data-i18n="info.addressTitle">Dirección</h3>
+              <p>95 Rue des Passerins<br>Québec, QC G1E 0E3</p>
+            </div>
+            <div class="info-box">
+              <h3 data-i18n="info.hoursTitle">Horarios indicados</h3>
+              <ul>
+                <li data-i18n="info.hours1">Domingo: 8 h - 18 h 30</li>
+                <li data-i18n="info.hours2">Martes a jueves: 8 h - 18 h 30</li>
+                <li data-i18n="info.hours3">Viernes: 7 h - 20 h</li>
+                <li data-i18n="info.hours4">Sábado: 7 h - 20 h 45</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <h3 data-i18n="info.linksTitle">Enlaces útiles</h3>
+              <ul>
+                <li><a href="https://www.instagram.com/chezgateaux/">Instagram: @chezgateaux</a></li>
+                <li><a href="https://www.ubereats.com/ca/store/chez-gateaux/HcDJucqoQEyN5vtEavyflw" data-i18n="info.uber">Ver menú en Uber Eats</a></li>
+                <li><a href="tel:+14186141282" data-i18n="info.phone">Teléfono: 418-614-1282</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="section-inner cta-box">
+          <div>
+            <p class="eyebrow" style="color: var(--guava)" data-i18n="final.eyebrow">Tu próxima celebración</p>
+            <h2 data-i18n="final.title">Empieza con una idea. Chez Gâteaux se encarga de convertirla en torta.</h2>
+            <p class="lead" data-i18n="final.copy">Manda la temática, fecha y número de personas por DM para recibir orientación y disponibilidad.</p>
+          </div>
+          <div class="section-actions">
+            <a class="button" href="https://www.instagram.com/chezgateaux/" data-i18n="cta.dm">Pedir por DM</a>
+            <a class="button secondary" href="https://www.ubereats.com/ca/store/chez-gateaux/HcDJucqoQEyN5vtEavyflw" data-i18n="cta.menu">Ver menú</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Chez Gâteaux, Québec</span>
+      <span data-i18n="footer.note">Página vitrina lista para revisar, personalizar y publicar cuando decidas.</span>
+    </footer>
+    <script>
+      const translations = {
+        es: {
+          metaTitle: "Chez Gâteaux | Tortas temáticas en Québec",
+          metaDescription: "Chez Gâteaux en Québec crea tortas temáticas para toda ocasión. Cuéntanos tu idea por DM y la convertimos en un pastel personalizado.",
+          "nav.menu": "Menu",
+          "nav.process": "Proceso",
+          "nav.info": "Info",
+          "cta.dm": "Pedir por DM",
+          "cta.menu": "Ver menú",
+          "hero.eyebrow": "Tortas temáticas en Québec",
+          "hero.copy": "Cuéntanos tu idea y la convertimos en una torta personalizada para cumpleaños, celebraciones y momentos especiales.",
+          "facts.followers": "Seguidores en Instagram",
+          "facts.posts": "Publicaciones de tortas y postres",
+          "facts.custom": "Pedidos personalizados",
+          "offer.eyebrow": "Favoritos",
+          "offer.title": "Tortas hechas a tu idea, no a una plantilla.",
+          "offer.copy": "El punto fuerte de Chez Gâteaux son las tortas temáticas para toda ocasión. También puedes encontrar postres, cafés y opciones de vitrina según disponibilidad.",
+          "card1.tag": "A pedido",
+          "card1.title": "Tortas temáticas",
+          "card1.copy": "Pasteles personalizados para cumpleaños, fechas especiales, personajes, colores y conceptos únicos.",
+          "card2.tag": "Tu idea",
+          "card2.title": "Diseños personalizados",
+          "card2.copy": "Comparte una referencia, una temática o una ocasión; el diseño se adapta a lo que quieres celebrar.",
+          "card3.tag": "Celebraciones",
+          "card3.title": "Para toda ocasión",
+          "card3.copy": "Cumpleaños, aniversarios, reuniones familiares, eventos infantiles y momentos especiales.",
+          "card4.tag": "Postres",
+          "card4.title": "Dulces de vitrina",
+          "card4.copy": "Tres leches, mousse de fruta de la pasión y otros postres disponibles según el día.",
+          "card5.tag": "Salado",
+          "card5.title": "Antojos colombianos",
+          "card5.copy": "Buñuelos, panes, empanadas y opciones saladas para acompañar el café o llevar.",
+          "card6.tag": "Café",
+          "card6.title": "Café colombiano",
+          "card6.copy": "Espresso, americano, latte, cappuccino y café filtrado para acompañar algo dulce.",
+          "process.eyebrow": "Cómo funciona",
+          "process.title": "Envía tu idea, confirma los detalles y recibe una torta hecha para tu ocasión.",
+          "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
+          "process.cite": "Promesa de Chez Gâteaux en Instagram",
+          "process.copy": "Para cotizar mejor, manda por DM la fecha, cantidad de personas, temática, colores y una referencia visual si ya tienes una.",
+          "info.eyebrow": "Pedidos y ubicación",
+          "info.title": "Haz tu pedido por Instagram o visita Chez Gâteaux en Québec.",
+          "info.copy": "Para tortas personalizadas, el canal principal es DM. Para productos disponibles al momento, revisa Instagram o la página de pedidos.",
+          "info.addressTitle": "Dirección",
+          "info.hoursTitle": "Horarios indicados",
+          "info.hours1": "Domingo: 8 h - 18 h 30",
+          "info.hours2": "Martes a jueves: 8 h - 18 h 30",
+          "info.hours3": "Viernes: 7 h - 20 h",
+          "info.hours4": "Sábado: 7 h - 20 h 45",
+          "info.linksTitle": "Enlaces útiles",
+          "info.uber": "Ver menú en Uber Eats",
+          "info.phone": "Teléfono: 418-614-1282",
+          "final.eyebrow": "Tu próxima celebración",
+          "final.title": "Empieza con una idea. Chez Gâteaux se encarga de convertirla en torta.",
+          "final.copy": "Manda la temática, fecha y número de personas por DM para recibir orientación y disponibilidad.",
+          "footer.note": "Página vitrina lista para revisar, personalizar y publicar cuando decidas."
+        },
+        fr: {
+          metaTitle: "Chez Gâteaux | Gâteaux thématiques à Québec",
+          metaDescription: "Chez Gâteaux à Québec crée des gâteaux thématiques pour toutes les occasions. Envoyez votre idée par DM et nous la transformons en gâteau personnalisé.",
+          "nav.menu": "Menu",
+          "nav.process": "Processus",
+          "nav.info": "Infos",
+          "cta.dm": "Commander par DM",
+          "cta.menu": "Voir le menu",
+          "hero.eyebrow": "Gâteaux thématiques à Québec",
+          "hero.copy": "Dites-nous votre idée et nous la transformons en gâteau personnalisé pour anniversaires, célébrations et moments spéciaux.",
+          "facts.followers": "Abonnés sur Instagram",
+          "facts.posts": "Publications de gâteaux et desserts",
+          "facts.custom": "Commandes personnalisées",
+          "offer.eyebrow": "Favoris",
+          "offer.title": "Des gâteaux faits selon votre idée, pas selon un modèle.",
+          "offer.copy": "La spécialité de Chez Gâteaux est le gâteau thématique pour toute occasion. Vous pouvez aussi trouver des desserts, cafés et options en vitrine selon la disponibilité.",
+          "card1.tag": "Sur commande",
+          "card1.title": "Gâteaux thématiques",
+          "card1.copy": "Gâteaux personnalisés pour anniversaires, dates spéciales, personnages, couleurs et concepts uniques.",
+          "card2.tag": "Votre idée",
+          "card2.title": "Designs personnalisés",
+          "card2.copy": "Partagez une référence, un thème ou une occasion; le design s'adapte à ce que vous voulez célébrer.",
+          "card3.tag": "Célébrations",
+          "card3.title": "Pour toute occasion",
+          "card3.copy": "Anniversaires, réunions de famille, événements pour enfants et moments spéciaux.",
+          "card4.tag": "Desserts",
+          "card4.title": "Douceurs en vitrine",
+          "card4.copy": "Tres leches, mousse aux fruits de la passion et autres desserts disponibles selon la journée.",
+          "card5.tag": "Salé",
+          "card5.title": "Envies colombiennes",
+          "card5.copy": "Buñuelos, pains, empanadas et options salées pour accompagner un café ou emporter.",
+          "card6.tag": "Café",
+          "card6.title": "Café colombien",
+          "card6.copy": "Espresso, americano, latte, cappuccino et café filtre pour accompagner une douceur.",
+          "process.eyebrow": "Comment ça marche",
+          "process.title": "Envoyez votre idée, confirmez les détails et recevez un gâteau fait pour votre occasion.",
+          "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
+          "process.cite": "Promesse de Chez Gâteaux sur Instagram",
+          "process.copy": "Pour une meilleure estimation, envoyez par DM la date, le nombre de personnes, le thème, les couleurs et une référence visuelle si vous en avez une.",
+          "info.eyebrow": "Commandes et emplacement",
+          "info.title": "Commandez sur Instagram ou visitez Chez Gâteaux à Québec.",
+          "info.copy": "Pour les gâteaux personnalisés, le canal principal est le DM. Pour les produits disponibles sur place, consultez Instagram ou la page de commande.",
+          "info.addressTitle": "Adresse",
+          "info.hoursTitle": "Horaires indiqués",
+          "info.hours1": "Dimanche: 8 h - 18 h 30",
+          "info.hours2": "Mardi à jeudi: 8 h - 18 h 30",
+          "info.hours3": "Vendredi: 7 h - 20 h",
+          "info.hours4": "Samedi: 7 h - 20 h 45",
+          "info.linksTitle": "Liens utiles",
+          "info.uber": "Voir le menu sur Uber Eats",
+          "info.phone": "Téléphone: 418-614-1282",
+          "final.eyebrow": "Votre prochaine célébration",
+          "final.title": "Commencez par une idée. Chez Gâteaux la transforme en gâteau.",
+          "final.copy": "Envoyez le thème, la date et le nombre de personnes par DM pour recevoir les disponibilités et les prochaines étapes.",
+          "footer.note": "Page vitrine prête à réviser, personnaliser et publier quand vous décidez."
+        },
+        en: {
+          metaTitle: "Chez Gâteaux | Custom Themed Cakes in Québec",
+          metaDescription: "Chez Gâteaux in Québec creates custom themed cakes for every occasion. Send your idea by DM and turn it into a personalized cake.",
+          "nav.menu": "Menu",
+          "nav.process": "Process",
+          "nav.info": "Info",
+          "cta.dm": "Order by DM",
+          "cta.menu": "View menu",
+          "hero.eyebrow": "Custom themed cakes in Québec",
+          "hero.copy": "Share your idea and we turn it into a personalized cake for birthdays, celebrations, and special moments.",
+          "facts.followers": "Instagram followers",
+          "facts.posts": "Cake and dessert posts",
+          "facts.custom": "Custom orders",
+          "offer.eyebrow": "Favorites",
+          "offer.title": "Cakes made from your idea, not from a template.",
+          "offer.copy": "Chez Gâteaux specializes in custom themed cakes for every occasion. Desserts, coffee, and display-case options may also be available depending on the day.",
+          "card1.tag": "Custom order",
+          "card1.title": "Themed cakes",
+          "card1.copy": "Personalized cakes for birthdays, special dates, characters, colors, and unique concepts.",
+          "card2.tag": "Your idea",
+          "card2.title": "Custom designs",
+          "card2.copy": "Share a reference, theme, or occasion; the design adapts to what you want to celebrate.",
+          "card3.tag": "Celebrations",
+          "card3.title": "For every occasion",
+          "card3.copy": "Birthdays, anniversaries, family gatherings, kids' events, and special moments.",
+          "card4.tag": "Desserts",
+          "card4.title": "Display-case sweets",
+          "card4.copy": "Tres leches, passion fruit mousse, and other desserts available depending on the day.",
+          "card5.tag": "Savory",
+          "card5.title": "Colombian cravings",
+          "card5.copy": "Buñuelos, breads, empanadas, and savory options to pair with coffee or take away.",
+          "card6.tag": "Coffee",
+          "card6.title": "Colombian coffee",
+          "card6.copy": "Espresso, americano, latte, cappuccino, and drip coffee to pair with something sweet.",
+          "process.eyebrow": "How it works",
+          "process.title": "Send your idea, confirm the details, and receive a cake made for your occasion.",
+          "process.quote": "\"Tell us your idea, we make it real.\"",
+          "process.cite": "Chez Gâteaux promise on Instagram",
+          "process.copy": "For a better quote, send the date, number of people, theme, colors, and a visual reference by DM if you have one.",
+          "info.eyebrow": "Orders and location",
+          "info.title": "Order on Instagram or visit Chez Gâteaux in Québec.",
+          "info.copy": "For custom cakes, DM is the main ordering channel. For ready-to-order items, check Instagram or the ordering page.",
+          "info.addressTitle": "Address",
+          "info.hoursTitle": "Listed hours",
+          "info.hours1": "Sunday: 8 AM - 6:30 PM",
+          "info.hours2": "Tuesday to Thursday: 8 AM - 6:30 PM",
+          "info.hours3": "Friday: 7 AM - 8 PM",
+          "info.hours4": "Saturday: 7 AM - 8:45 PM",
+          "info.linksTitle": "Useful links",
+          "info.uber": "View menu on Uber Eats",
+          "info.phone": "Phone: 418-614-1282",
+          "final.eyebrow": "Your next celebration",
+          "final.title": "Start with an idea. Chez Gâteaux turns it into cake.",
+          "final.copy": "Send the theme, date, and number of guests by DM to get availability and next steps.",
+          "footer.note": "Draft landing page ready to review, customize, and publish when you decide."
+        }
+      };
+
+      function setLanguage(lang) {
+        const dictionary = translations[lang] || translations.es;
+        document.documentElement.lang = lang;
+        document.title = dictionary.metaTitle;
+        document.querySelector('meta[name="description"]').setAttribute("content", dictionary.metaDescription);
+        document.querySelector('meta[property="og:title"]').setAttribute("content", dictionary.metaTitle);
+        document.querySelector('meta[property="og:description"]').setAttribute("content", dictionary.metaDescription);
+        document.querySelectorAll("[data-i18n]").forEach((node) => {
+          const key = node.getAttribute("data-i18n");
+          if (dictionary[key]) {
+            node.textContent = dictionary[key];
+          }
+        });
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          button.classList.toggle("active", button.getAttribute("data-lang") === lang);
+        });
+      }
+
+      document.querySelectorAll("[data-lang]").forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.getAttribute("data-lang")));
+      });
+    </script>
+  </body>
+</html>
