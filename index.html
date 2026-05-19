@@ -14,22 +14,23 @@
       content="Tortas temáticas para cumpleaños, celebraciones y momentos especiales. Pedidos por DM en Instagram."
     >
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/660135795_18096283964101987_7841187236513917613_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_Srn9rRspNYQ7kNvwGYgwFi&_nc_oc=Adp5prHvEBYZ54IkoXJXgWUW7hcxFsPdSv7vBXOp97RpNpGT7OJVw2bBSPjsxTShibs&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQGJr2MCLojVNQDSQNQOIVZe-fdLZ1VDAHroEsteY7FywwJEu8x_VDt8NaQ1dnRvrkrpoARbQJ8T&oh=00_Af4q2q5mQOzFkXoq2KCrezvQ-lAV4gIKj-1DWWM5J4JMsw&oe=6A1164E5">
-    <link rel="preconnect" href="https://scontent-iad6-1.cdninstagram.com">
-    <link rel="preconnect" href="https://scontent-iad3-1.cdninstagram.com">
+    <meta property="og:image" content="assets/cake-hero.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
       :root {
-        --cream: #fff9f4;
-        --vanilla: #ffe6b8;
-        --cocoa: #241816;
-        --coffee: #5d342c;
-        --guava: #c83f61;
-        --mint: #6fae9d;
-        --gold: #d9a441;
-        --ink: #201717;
-        --muted: #75615b;
-        --line: rgba(36, 24, 22, 0.14);
-        --shadow: 0 24px 70px rgba(77, 35, 50, 0.18);
+        --cream: #fff4fa;
+        --vanilla: #ffe2f0;
+        --cocoa: #3a1630;
+        --coffee: #7b2d63;
+        --guava: #ff4f9a;
+        --mint: #ff9ac6;
+        --gold: #d8a534;
+        --ink: #32102a;
+        --muted: #806070;
+        --line: rgba(255, 79, 154, 0.18);
+        --shadow: 0 24px 70px rgba(190, 48, 122, 0.2);
       }
 
       * {
@@ -43,8 +44,10 @@
       body {
         margin: 0;
         color: var(--ink);
-        background: var(--cream);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 12% 4%, rgba(255, 154, 198, 0.32), transparent 28%),
+          linear-gradient(180deg, #fff4fa 0%, #fff9fb 48%, #fff3f8 100%);
+        font-family: "Nunito Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         line-height: 1.5;
       }
 
@@ -68,7 +71,7 @@
         gap: 20px;
         padding: 14px clamp(18px, 4vw, 54px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-        background: rgba(36, 24, 22, 0.9);
+        background: rgba(58, 22, 48, 0.88);
         color: #fffaf3;
         backdrop-filter: blur(16px);
       }
@@ -87,8 +90,8 @@
         width: 34px;
         height: 34px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--vanilla), var(--gold));
-        color: var(--cocoa);
+        background: linear-gradient(135deg, #ff85b8, var(--gold));
+        color: #fff;
         font-weight: 900;
       }
 
@@ -128,7 +131,7 @@
       }
 
       .language-switch button.active {
-        background: #fffaf3;
+        background: #fff7fb;
         color: var(--cocoa);
       }
 
@@ -140,22 +143,22 @@
         padding: 0 18px;
         border: 1px solid transparent;
         border-radius: 999px;
-        background: linear-gradient(135deg, #d94e74, var(--guava));
+        background: linear-gradient(135deg, #ff6cad, #ff3d92 48%, #d8a534);
         color: #fff;
         font-weight: 800;
-        box-shadow: 0 12px 28px rgba(200, 63, 97, 0.3);
+        box-shadow: 0 12px 28px rgba(255, 79, 154, 0.34);
         transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
       }
 
       .button:hover {
         transform: translateY(-2px);
-        background: #aa2f4f;
-        box-shadow: 0 16px 34px rgba(200, 63, 97, 0.36);
+        background: #e12f82;
+        box-shadow: 0 16px 34px rgba(255, 79, 154, 0.42);
       }
 
       .button.secondary {
         border-color: var(--line);
-        background: #fffaf3;
+        background: #fff7fb;
         color: var(--cocoa);
         box-shadow: none;
       }
@@ -169,8 +172,8 @@
         overflow: hidden;
         color: #fffaf3;
         background:
-          linear-gradient(90deg, rgba(32, 23, 23, 0.88) 0%, rgba(93, 52, 44, 0.66) 45%, rgba(111, 174, 157, 0.16) 100%),
-          url("https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/660135795_18096283964101987_7841187236513917613_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_Srn9rRspNYQ7kNvwGYgwFi&_nc_oc=Adp5prHvEBYZ54IkoXJXgWUW7hcxFsPdSv7vBXOp97RpNpGT7OJVw2bBSPjsxTShibs&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQGJr2MCLojVNQDSQNQOIVZe-fdLZ1VDAHroEsteY7FywwJEu8x_VDt8NaQ1dnRvrkrpoARbQJ8T&oh=00_Af4q2q5mQOzFkXoq2KCrezvQ-lAV4gIKj-1DWWM5J4JMsw&oe=6A1164E5") center / cover;
+          linear-gradient(90deg, rgba(58, 22, 48, 0.88) 0%, rgba(190, 48, 122, 0.58) 45%, rgba(255, 154, 198, 0.2) 100%),
+          url("assets/cake-hero.jpg") center / cover;
       }
 
       .hero-content {
@@ -200,9 +203,9 @@
       h1 {
         max-width: 11ch;
         margin-bottom: 20px;
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: "Baloo 2", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
         font-size: clamp(4rem, 12vw, 9rem);
-        line-height: 0.86;
+        line-height: 0.82;
         letter-spacing: 0;
       }
 
@@ -228,7 +231,7 @@
         grid-template-columns: repeat(3, minmax(120px, 1fr));
         width: min(620px, calc(100% - 36px));
         border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(36, 24, 22, 0.66);
+        background: rgba(58, 22, 48, 0.68);
         backdrop-filter: blur(18px);
       }
 
@@ -273,7 +276,7 @@
       h2 {
         margin-bottom: 12px;
         color: var(--cocoa);
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: "Baloo 2", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
         font-size: clamp(2.3rem, 5vw, 4.8rem);
         line-height: 0.96;
         letter-spacing: 0;
@@ -295,12 +298,12 @@
         padding: 24px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #fffaf3;
+        background: #fff8fc;
         box-shadow: 0 14px 42px rgba(47, 33, 28, 0.07);
       }
 
       .menu-card.featured {
-        background: var(--cocoa);
+        background: linear-gradient(135deg, #3a1630, #9b2a72);
         color: #fffaf3;
       }
 
@@ -309,7 +312,7 @@
         margin-bottom: 28px;
         padding: 7px 10px;
         border-radius: 999px;
-        background: rgba(111, 174, 157, 0.18);
+        background: rgba(255, 154, 198, 0.2);
         color: var(--coffee);
         font-size: 0.78rem;
         font-weight: 900;
@@ -336,8 +339,28 @@
         color: rgba(255, 250, 243, 0.76);
       }
 
+      .cake-showcase {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr 1fr;
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .cake-showcase img {
+        width: 100%;
+        height: clamp(230px, 28vw, 390px);
+        object-fit: cover;
+        border: 1px solid rgba(255, 79, 154, 0.18);
+        border-radius: 8px;
+        box-shadow: 0 16px 42px rgba(190, 48, 122, 0.15);
+      }
+
+      .cake-showcase img:nth-child(2) {
+        transform: translateY(24px);
+      }
+
       .split {
-        background: #fffaf3;
+        background: #fff8fc;
       }
 
       .split-grid {
@@ -366,10 +389,10 @@
       .quote {
         margin: 0;
         padding: 28px;
-        border-left: 5px solid var(--mint);
+        border-left: 5px solid var(--gold);
         background: var(--cream);
         color: var(--cocoa);
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: "Baloo 2", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
         font-size: clamp(1.5rem, 3vw, 2.4rem);
         line-height: 1.15;
       }
@@ -378,13 +401,15 @@
         display: block;
         margin-top: 18px;
         color: var(--muted);
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-family: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
         font-size: 0.92rem;
         font-style: normal;
       }
 
       .info-band {
-        background: var(--cocoa);
+        background:
+          radial-gradient(circle at top right, rgba(255, 154, 198, 0.22), transparent 34%),
+          linear-gradient(135deg, #3a1630 0%, #6f2356 58%, #9b2a72 100%);
         color: #fffaf3;
       }
 
@@ -434,8 +459,8 @@
 
       .final-cta {
         background:
-          linear-gradient(90deg, rgba(255, 249, 244, 0.98), rgba(255, 249, 244, 0.88)),
-          url("https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/660688511_18096283766101987_4952185329113916519_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=WRoaR4FtN8QQ7kNvwEw6dTi&_nc_oc=AdpkfglcxlWnj99xpfSrDWJ-ChyMaWNZbPOhriaBE0627IfT72_ONyzf6gUgYC34qQI&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQFmXiRS4f6izzTHU7mx19I-YK4_QdW-1btcet08mRIxa2nb7hJBiwQo_0mzADZbAdnvZ4qP1-gJ&oh=00_Af409zSu3__upknfNLXUxvcjl1INlVUD9bdjC8s8e4qzRg&oe=6A116ABB") center / cover;
+          linear-gradient(90deg, rgba(255, 244, 250, 0.98), rgba(255, 244, 250, 0.86)),
+          url("assets/cake-cta.jpg") center / cover;
       }
 
       .cta-box {
@@ -446,7 +471,7 @@
         padding: clamp(28px, 5vw, 58px);
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: rgba(255, 250, 243, 0.9);
+        background: rgba(255, 248, 252, 0.92);
         box-shadow: var(--shadow);
       }
 
@@ -456,7 +481,7 @@
         justify-content: space-between;
         gap: 14px;
         padding: 28px clamp(18px, 4vw, 54px);
-        background: #1c1613;
+        background: #32102a;
         color: rgba(255, 250, 243, 0.72);
         font-size: 0.92rem;
       }
@@ -500,8 +525,13 @@
         }
 
         .menu-grid,
-        .info-grid {
+        .info-grid,
+        .cake-showcase {
           grid-template-columns: 1fr;
+        }
+
+        .cake-showcase img:nth-child(2) {
+          transform: none;
         }
 
         .photo-panel,
@@ -643,6 +673,12 @@
               <p data-i18n="card6.copy">Espresso, americano, latte, cappuccino y café filtrado para acompañar algo dulce.</p>
             </article>
           </div>
+
+          <div class="cake-showcase" aria-label="Pasteles personalizados de Chez Gâteaux">
+            <img src="assets/cake-hero.jpg" alt="Pastel temático elaborado de Chez Gâteaux">
+            <img src="assets/cake-process.jpg" alt="Pastel personalizado con decoración compleja">
+            <img src="assets/cake-cta.jpg" alt="Pastel de celebración hecho a pedido">
+          </div>
         </div>
       </section>
 
@@ -650,7 +686,7 @@
         <div class="section-inner split-grid">
           <div class="photo-panel">
             <img
-              src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/660490816_18096283886101987_6164709813589812195_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Q_rSAHcDNP8Q7kNvwEP0-ii&_nc_oc=Adp7YqIeOMOqejNatkXG5BQ4NyLITwVjgbRLvfbdg_1DEhHsdKqYXw2toHBPqnG8_wQ&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ccnY_1L9bZ9oPgM2GI5dIw&_nc_tpa=Q5bMBQFL2Iq0qfTO0gFZBKzpxlTJJnY6rvMiHX0LVT3jFvxYYTMU8PZDuYQJV3T3IXuWLM9IhDBEINbJ&oh=00_Af7DxJs1Fg13lM9J592nWzJpWd5sWPQ6k-DlXK4cECBjtw&oe=6A11967B"
+              src="assets/cake-process.jpg"
               alt="Torta temática personalizada de Chez Gâteaux"
             >
           </div>
