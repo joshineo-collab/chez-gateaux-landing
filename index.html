@@ -171,7 +171,7 @@
         color: #fffaf3;
         background:
           linear-gradient(90deg, rgba(23, 16, 20, 0.9) 0%, rgba(125, 47, 97, 0.66) 45%, rgba(223, 120, 173, 0.18) 100%),
-          url("assets/cake-hero.jpg") center / cover;
+          url("assets/instagram-1.jpg") center / cover;
       }
 
       .hero-content {
@@ -357,6 +357,36 @@
         transform: translateY(24px);
       }
 
+      .instagram-section {
+        background: #fff8fc;
+      }
+
+      .instagram-feed {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .instagram-feed a {
+        display: block;
+        overflow: hidden;
+        border: 1px solid rgba(223, 120, 173, 0.22);
+        border-radius: 8px;
+        background: var(--vanilla);
+        box-shadow: 0 14px 34px rgba(125, 47, 97, 0.12);
+      }
+
+      .instagram-feed img {
+        width: 100%;
+        height: clamp(210px, 22vw, 320px);
+        object-fit: cover;
+        transition: transform 180ms ease;
+      }
+
+      .instagram-feed a:hover img {
+        transform: scale(1.04);
+      }
+
       .split {
         background: #fff8fc;
       }
@@ -458,7 +488,7 @@
       .final-cta {
         background:
           linear-gradient(90deg, rgba(255, 244, 250, 0.98), rgba(255, 244, 250, 0.86)),
-          url("assets/cake-cta.jpg") center / cover;
+          url("assets/instagram-3.jpg") center / cover;
       }
 
       .cta-box {
@@ -524,7 +554,8 @@
 
         .menu-grid,
         .info-grid,
-        .cake-showcase {
+        .cake-showcase,
+        .instagram-feed {
           grid-template-columns: 1fr;
         }
 
@@ -586,6 +617,7 @@
       </a>
       <nav class="nav" aria-label="Main navigation">
         <a href="#menu" data-i18n="nav.menu">Menu</a>
+        <a href="#instagram" data-i18n="nav.instagram">Instagram</a>
         <a href="#avis" data-i18n="nav.process">Proceso</a>
         <a href="#infos" data-i18n="nav.info">Info</a>
       </nav>
@@ -673,9 +705,44 @@
           </div>
 
           <div class="cake-showcase" aria-label="Pasteles personalizados de Chez Gâteaux">
-            <img src="assets/cake-hero.jpg" alt="Pastel temático elaborado de Chez Gâteaux">
-            <img src="assets/cake-process.jpg" alt="Pastel personalizado con decoración compleja">
-            <img src="assets/cake-cta.jpg" alt="Pastel de celebración hecho a pedido">
+            <img src="assets/instagram-1.jpg" alt="Pastel temático elaborado de Chez Gâteaux">
+            <img src="assets/instagram-2.jpg" alt="Pastel personalizado con decoración compleja">
+            <img src="assets/instagram-3.jpg" alt="Pastel de celebración hecho a pedido">
+          </div>
+        </div>
+      </section>
+
+      <section class="instagram-section" id="instagram">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow" style="color: var(--guava)" data-i18n="instagram.eyebrow">Instagram</p>
+              <h2 data-i18n="instagram.title">Fotos reales publicadas por Chez Gâteaux.</h2>
+            </div>
+            <p class="lead" data-i18n="instagram.copy">
+              Una muestra visual de tortas, diseños y publicaciones recientes del perfil. Toca una foto para verla en Instagram.
+            </p>
+          </div>
+
+          <div class="instagram-feed">
+            <a href="https://www.instagram.com/p/DTiuZ8jAaHH/">
+              <img src="assets/instagram-1.jpg" alt="Foto publicada en Instagram por Chez Gâteaux">
+            </a>
+            <a href="https://www.instagram.com/p/DTiuueNgXcQ/">
+              <img src="assets/instagram-2.jpg" alt="Torta publicada en Instagram por Chez Gâteaux">
+            </a>
+            <a href="https://www.instagram.com/p/DTiupt3AR9d/">
+              <img src="assets/instagram-3.jpg" alt="Pastel publicado en Instagram por Chez Gâteaux">
+            </a>
+            <a href="https://www.instagram.com/p/DTiumkjgZvV/">
+              <img src="assets/instagram-4.jpg" alt="Diseño publicado en Instagram por Chez Gâteaux">
+            </a>
+            <a href="https://www.instagram.com/p/DWzoyDPAVgV/">
+              <img src="assets/cake-hero.jpg" alt="Pastel reciente publicado por Chez Gâteaux">
+            </a>
+            <a href="https://www.instagram.com/p/DWzovwYgUlm/">
+              <img src="assets/cake-process.jpg" alt="Torta personalizada publicada por Chez Gâteaux">
+            </a>
           </div>
         </div>
       </section>
@@ -684,7 +751,7 @@
         <div class="section-inner split-grid">
           <div class="photo-panel">
             <img
-              src="assets/cake-process.jpg"
+              src="assets/instagram-2.jpg"
               alt="Torta temática personalizada de Chez Gâteaux"
             >
           </div>
@@ -765,6 +832,7 @@
           metaTitle: "Chez Gâteaux | Tortas temáticas en Québec",
           metaDescription: "Chez Gâteaux en Québec crea tortas temáticas para toda ocasión. Cuéntanos tu idea por DM y la convertimos en un pastel personalizado.",
           "nav.menu": "Menu",
+          "nav.instagram": "Instagram",
           "nav.process": "Proceso",
           "nav.info": "Info",
           "cta.dm": "Pedir por DM",
@@ -795,6 +863,9 @@
           "card6.tag": "Café",
           "card6.title": "Café colombiano",
           "card6.copy": "Espresso, americano, latte, cappuccino y café filtrado para acompañar algo dulce.",
+          "instagram.eyebrow": "Instagram",
+          "instagram.title": "Fotos reales publicadas por Chez Gâteaux.",
+          "instagram.copy": "Una muestra visual de tortas, diseños y publicaciones recientes del perfil. Toca una foto para verla en Instagram.",
           "process.eyebrow": "Cómo funciona",
           "process.title": "Envía tu idea, confirma los detalles y recibe una torta hecha para tu ocasión.",
           "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
@@ -821,6 +892,7 @@
           metaTitle: "Chez Gâteaux | Gâteaux thématiques à Québec",
           metaDescription: "Chez Gâteaux à Québec crée des gâteaux thématiques pour toutes les occasions. Envoyez votre idée par DM et nous la transformons en gâteau personnalisé.",
           "nav.menu": "Menu",
+          "nav.instagram": "Instagram",
           "nav.process": "Processus",
           "nav.info": "Infos",
           "cta.dm": "Commander par DM",
@@ -851,6 +923,9 @@
           "card6.tag": "Café",
           "card6.title": "Café colombien",
           "card6.copy": "Espresso, americano, latte, cappuccino et café filtre pour accompagner une douceur.",
+          "instagram.eyebrow": "Instagram",
+          "instagram.title": "De vraies photos publiées par Chez Gâteaux.",
+          "instagram.copy": "Un aperçu visuel des gâteaux, designs et publications récentes du profil. Touchez une photo pour la voir sur Instagram.",
           "process.eyebrow": "Comment ça marche",
           "process.title": "Envoyez votre idée, confirmez les détails et recevez un gâteau fait pour votre occasion.",
           "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
@@ -877,6 +952,7 @@
           metaTitle: "Chez Gâteaux | Custom Themed Cakes in Québec",
           metaDescription: "Chez Gâteaux in Québec creates custom themed cakes for every occasion. Send your idea by DM and turn it into a personalized cake.",
           "nav.menu": "Menu",
+          "nav.instagram": "Instagram",
           "nav.process": "Process",
           "nav.info": "Info",
           "cta.dm": "Order by DM",
@@ -907,6 +983,9 @@
           "card6.tag": "Coffee",
           "card6.title": "Colombian coffee",
           "card6.copy": "Espresso, americano, latte, cappuccino, and drip coffee to pair with something sweet.",
+          "instagram.eyebrow": "Instagram",
+          "instagram.title": "Real photos published by Chez Gâteaux.",
+          "instagram.copy": "A visual sample of cakes, designs, and recent posts from the profile. Tap a photo to view it on Instagram.",
           "process.eyebrow": "How it works",
           "process.title": "Send your idea, confirm the details, and receive a cake made for your occasion.",
           "process.quote": "\"Tell us your idea, we make it real.\"",
