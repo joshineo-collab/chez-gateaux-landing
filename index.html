@@ -420,6 +420,47 @@
         transform: scale(1.04);
       }
 
+      .mascot {
+        position: fixed;
+        right: clamp(14px, 3vw, 34px);
+        bottom: clamp(16px, 4vw, 34px);
+        z-index: 30;
+        width: clamp(74px, 9vw, 118px);
+        height: clamp(74px, 9vw, 118px);
+        border: 2px solid rgba(216, 165, 52, 0.7);
+        border-radius: 50%;
+        background: rgba(255, 248, 252, 0.92);
+        box-shadow: 0 18px 46px rgba(125, 47, 97, 0.24);
+        pointer-events: none;
+        animation: mascotFloat 8s ease-in-out infinite;
+      }
+
+      .mascot img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 10px;
+      }
+
+      @keyframes mascotFloat {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) rotate(-3deg);
+        }
+
+        25% {
+          transform: translate3d(-12px, -18px, 0) rotate(4deg);
+        }
+
+        50% {
+          transform: translate3d(-28px, -6px, 0) rotate(-2deg);
+        }
+
+        75% {
+          transform: translate3d(-8px, -24px, 0) rotate(5deg);
+        }
+      }
+
       .split {
         background: #fff8fc;
       }
@@ -600,6 +641,12 @@
         .photo-panel img {
           min-height: 380px;
         }
+
+        .mascot {
+          width: 68px;
+          height: 68px;
+          opacity: 0.92;
+        }
       }
 
       @media (max-width: 520px) {
@@ -640,6 +687,16 @@
           width: 100%;
         }
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-slide,
+        .mascot,
+        .button,
+        .instagram-feed img {
+          animation: none;
+          transition: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -669,6 +726,8 @@
           <img class="hero-slide" src="assets/instagram-2.jpg" alt="">
           <img class="hero-slide" src="assets/instagram-3.jpg" alt="">
           <img class="hero-slide" src="assets/instagram-4.jpg" alt="">
+          <img class="hero-slide" src="assets/facebook-1.jpg" alt="">
+          <img class="hero-slide" src="assets/facebook-4.jpg" alt="">
           <img class="hero-slide" src="assets/cake-hero.jpg" alt="">
         </div>
         <div class="hero-content">
@@ -756,11 +815,11 @@
         <div class="section-inner">
           <div class="section-head">
             <div>
-              <p class="eyebrow" style="color: var(--guava)" data-i18n="instagram.eyebrow">Instagram</p>
+              <p class="eyebrow" style="color: var(--guava)" data-i18n="instagram.eyebrow">Instagram y Facebook</p>
               <h2 data-i18n="instagram.title">Fotos reales publicadas por Chez Gâteaux.</h2>
             </div>
             <p class="lead" data-i18n="instagram.copy">
-              Una muestra visual de tortas, diseños y publicaciones recientes del perfil. Toca una foto para verla en Instagram.
+              Una muestra visual de tortas, diseños y publicaciones recientes del perfil. Toca una foto para verla en redes.
             </p>
           </div>
 
@@ -800,6 +859,18 @@
             </a>
             <a href="https://www.instagram.com/reel/DN59-3zjYkq/">
               <img src="assets/instagram-10.jpg" alt="Publicación de evento de Chez Gâteaux">
+            </a>
+            <a href="https://www.facebook.com/photo.php?fbid=1427417866066687&set=a.457646136377203&type=3">
+              <img src="assets/facebook-1.jpg" alt="Torta elegante publicada en Facebook por Chez Gâteaux">
+            </a>
+            <a href="https://www.facebook.com/photo.php?fbid=1427417672733373&set=a.457646136377203&type=3">
+              <img src="assets/facebook-2.jpg" alt="Torta temática de esquí publicada en Facebook por Chez Gâteaux">
+            </a>
+            <a href="https://www.facebook.com/photo.php?fbid=1427417669400040&set=a.457646136377203&type=3">
+              <img src="assets/facebook-3.jpg" alt="Detalle de torta personalizada publicado en Facebook por Chez Gâteaux">
+            </a>
+            <a href="https://www.facebook.com/photo.php?fbid=1427416036066870&set=a.457646136377203&type=3">
+              <img src="assets/facebook-4.jpg" alt="Torta infantil temática publicada en Facebook por Chez Gâteaux">
             </a>
           </div>
         </div>
@@ -884,6 +955,9 @@
       <span>Chez Gâteaux, Québec</span>
       <span data-i18n="footer.note">Página vitrina lista para revisar, personalizar y publicar cuando decidas.</span>
     </footer>
+    <div class="mascot" aria-hidden="true">
+      <img src="assets/logo-chez-gateaux.png" alt="">
+    </div>
     <script>
       const translations = {
         es: {
@@ -921,9 +995,9 @@
           "card6.tag": "Café",
           "card6.title": "Café colombiano",
           "card6.copy": "Espresso, americano, latte, cappuccino y café filtrado para acompañar algo dulce.",
-          "instagram.eyebrow": "Instagram",
+          "instagram.eyebrow": "Instagram y Facebook",
           "instagram.title": "Fotos reales publicadas por Chez Gâteaux.",
-          "instagram.copy": "Una muestra visual de tortas, diseños y publicaciones recientes del perfil. Toca una foto para verla en Instagram.",
+          "instagram.copy": "Una muestra visual de tortas, diseños y publicaciones recientes del perfil. Toca una foto para verla en redes.",
           "process.eyebrow": "Cómo funciona",
           "process.title": "Envía tu idea, confirma los detalles y recibe una torta hecha para tu ocasión.",
           "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
@@ -981,9 +1055,9 @@
           "card6.tag": "Café",
           "card6.title": "Café colombien",
           "card6.copy": "Espresso, americano, latte, cappuccino et café filtre pour accompagner une douceur.",
-          "instagram.eyebrow": "Instagram",
+          "instagram.eyebrow": "Instagram et Facebook",
           "instagram.title": "De vraies photos publiées par Chez Gâteaux.",
-          "instagram.copy": "Un aperçu visuel des gâteaux, designs et publications récentes du profil. Touchez une photo pour la voir sur Instagram.",
+          "instagram.copy": "Un aperçu visuel des gâteaux, designs et publications récentes du profil. Touchez une photo pour la voir sur les réseaux.",
           "process.eyebrow": "Comment ça marche",
           "process.title": "Envoyez votre idée, confirmez les détails et recevez un gâteau fait pour votre occasion.",
           "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
@@ -1041,9 +1115,9 @@
           "card6.tag": "Coffee",
           "card6.title": "Colombian coffee",
           "card6.copy": "Espresso, americano, latte, cappuccino, and drip coffee to pair with something sweet.",
-          "instagram.eyebrow": "Instagram",
+          "instagram.eyebrow": "Instagram and Facebook",
           "instagram.title": "Real photos published by Chez Gâteaux.",
-          "instagram.copy": "A visual sample of cakes, designs, and recent posts from the profile. Tap a photo to view it on Instagram.",
+          "instagram.copy": "A visual sample of cakes, designs, and recent posts from the profile. Tap a photo to view it on social media.",
           "process.eyebrow": "How it works",
           "process.title": "Send your idea, confirm the details, and receive a cake made for your occasion.",
           "process.quote": "\"Tell us your idea, we make it real.\"",
