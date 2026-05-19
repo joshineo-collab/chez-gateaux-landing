@@ -432,8 +432,6 @@
         background: transparent;
         cursor: pointer;
         pointer-events: auto;
-        transform: translate3d(var(--mascot-x, 0px), var(--mascot-y, 0px), 0);
-        transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
       }
 
       .mascot-shell {
@@ -445,27 +443,14 @@
       }
 
       .mascot-video {
-        display: none;
-      }
-
-      .mascot-canvas,
-      .mascot-fallback {
         width: 100%;
         height: 100%;
-        object-fit: contain;
-        filter: drop-shadow(0 22px 32px rgba(125, 47, 97, 0.28));
-      }
-
-      .mascot-canvas {
-        display: none;
-      }
-
-      .mascot.has-canvas .mascot-canvas {
-        display: block;
-      }
-
-      .mascot.has-canvas .mascot-fallback {
-        display: none;
+        overflow: hidden;
+        border: 2px solid rgba(216, 165, 52, 0.68);
+        border-radius: 28px;
+        object-fit: cover;
+        box-shadow: 0 22px 52px rgba(125, 47, 97, 0.28);
+        background: #ffd7e7;
       }
 
       .mascot-bubble {
@@ -496,10 +481,6 @@
 
       .mascot.is-dancing .mascot-shell {
         animation: mascotDance 1.15s ease-in-out 1, mascotFloat 8s ease-in-out 1.15s infinite;
-      }
-
-      .mascot.is-waving .mascot-shell {
-        animation: mascotWave 1.4s ease-in-out 1, mascotFloat 8s ease-in-out 1.4s infinite;
       }
 
       @keyframes mascotFloat {
@@ -537,29 +518,6 @@
 
         75% {
           transform: translate3d(-6px, -22px, 0) rotate(6deg) scale(1.06);
-        }
-      }
-
-      @keyframes mascotWave {
-        0%,
-        100% {
-          transform: translate3d(0, 0, 0) rotate(-3deg) scale(1);
-        }
-
-        20% {
-          transform: translate3d(-6px, -10px, 0) rotate(10deg) scale(1.03);
-        }
-
-        40% {
-          transform: translate3d(8px, -16px, 0) rotate(-9deg) scale(1.04);
-        }
-
-        60% {
-          transform: translate3d(-8px, -12px, 0) rotate(8deg) scale(1.03);
-        }
-
-        80% {
-          transform: translate3d(4px, -6px, 0) rotate(-5deg) scale(1.02);
         }
       }
 
@@ -1067,8 +1025,6 @@
         <video class="mascot-video" autoplay muted loop playsinline poster="assets/mascot-poster.png">
           <source src="assets/mascot-cupcake.mp4" type="video/mp4">
         </video>
-        <canvas class="mascot-canvas" width="320" height="430"></canvas>
-        <img class="mascot-fallback" src="assets/mascot-poster.png" alt="">
         <span class="mascot-bubble" data-i18n="mascot.bubble">¿Torta?</span>
       </span>
     </button>
@@ -1296,112 +1252,6 @@
 
       if (mascot) {
         const mascotVideo = mascot.querySelector("video");
-        const mascotCanvas = mascot.querySelector("canvas");
-        const mascotContext = mascotCanvas ? mascotCanvas.getContext("2d", { willReadFrequently: true }) : null;
-        const moves = [
-          ["0px", "0px"],
-          ["-18px", "-12px"],
-          ["10px", "-24px"],
-          ["-28px", "4px"],
-          ["6px", "-8px"]
-        ];
-        let currentMove = 0;
-
-        function drawMascotFrame() {
-          if (
-            !mascotVideo ||
-            !mascotCanvas ||
-            !mascotContext ||
-            !mascotVideo.videoWidth ||
-            mascotVideo.readyState < 2
-          ) {
-            window.requestAnimationFrame(drawMascotFrame);
-            return;
-          }
-
-          const canvasWidth = mascotCanvas.width;
-          const canvasHeight = mascotCanvas.height;
-          const scale = Math.max(canvasWidth / mascotVideo.videoWidth, canvasHeight / mascotVideo.videoHeight);
-          const drawWidth = mascotVideo.videoWidth * scale;
-          const drawHeight = mascotVideo.videoHeight * scale;
-          const drawX = (canvasWidth - drawWidth) / 2;
-          const drawY = (canvasHeight - drawHeight) / 2;
-
-          mascotContext.clearRect(0, 0, canvasWidth, canvasHeight);
-          mascotContext.drawImage(mascotVideo, drawX, drawY, drawWidth, drawHeight);
-
-          try {
-            const frame = mascotContext.getImageData(0, 0, canvasWidth, canvasHeight);
-            const pixels = frame.data;
-            const visited = new Uint8Array(canvasWidth * canvasHeight);
-            const stack = [];
-
-            function isBackgroundPixel(pixelIndex) {
-              const offset = pixelIndex * 4;
-              const red = pixels[offset];
-              const green = pixels[offset + 1];
-              const blue = pixels[offset + 2];
-              const warmWall = red > 214 && green > 158 && blue > 135 && red >= green && green >= blue && red - blue < 120;
-              const paleWall = red > 232 && green > 204 && blue > 194 && red >= green && green >= blue;
-              return warmWall || paleWall;
-            }
-
-            function pushIfBackground(x, y) {
-              if (x < 0 || y < 0 || x >= canvasWidth || y >= canvasHeight) {
-                return;
-              }
-
-              const pixelIndex = y * canvasWidth + x;
-
-              if (visited[pixelIndex] || !isBackgroundPixel(pixelIndex)) {
-                return;
-              }
-
-              visited[pixelIndex] = 1;
-              stack.push(pixelIndex);
-            }
-
-            for (let x = 0; x < canvasWidth; x += 1) {
-              pushIfBackground(x, 0);
-              pushIfBackground(x, canvasHeight - 1);
-            }
-
-            for (let y = 0; y < canvasHeight; y += 1) {
-              pushIfBackground(0, y);
-              pushIfBackground(canvasWidth - 1, y);
-            }
-
-            while (stack.length) {
-              const pixelIndex = stack.pop();
-              const x = pixelIndex % canvasWidth;
-              const y = Math.floor(pixelIndex / canvasWidth);
-              pixels[pixelIndex * 4 + 3] = 0;
-              pushIfBackground(x + 1, y);
-              pushIfBackground(x - 1, y);
-              pushIfBackground(x, y + 1);
-              pushIfBackground(x, y - 1);
-            }
-
-            mascotContext.putImageData(frame, 0, 0);
-            mascot.classList.add("has-canvas");
-          } catch (error) {
-            mascot.classList.remove("has-canvas");
-          }
-          window.requestAnimationFrame(drawMascotFrame);
-        }
-
-        if (mascotVideo && mascotCanvas && mascotContext) {
-          mascotVideo.addEventListener("play", drawMascotFrame, { once: true });
-          mascotVideo.play().catch(() => {});
-        }
-
-        window.setInterval(() => {
-          currentMove = (currentMove + 1) % moves.length;
-          mascot.style.setProperty("--mascot-x", moves[currentMove][0]);
-          mascot.style.setProperty("--mascot-y", moves[currentMove][1]);
-          mascot.classList.add("is-waving");
-          window.setTimeout(() => mascot.classList.remove("is-waving"), 1450);
-        }, 5200);
 
         mascot.addEventListener("click", () => {
           mascot.classList.add("is-dancing");
