@@ -1330,23 +1330,63 @@
           mascotContext.clearRect(0, 0, canvasWidth, canvasHeight);
           mascotContext.drawImage(mascotVideo, drawX, drawY, drawWidth, drawHeight);
 
-          const frame = mascotContext.getImageData(0, 0, canvasWidth, canvasHeight);
-          const pixels = frame.data;
+          try {
+            const frame = mascotContext.getImageData(0, 0, canvasWidth, canvasHeight);
+            const pixels = frame.data;
+            const visited = new Uint8Array(canvasWidth * canvasHeight);
+            const stack = [];
 
-          for (let index = 0; index < pixels.length; index += 4) {
-            const red = pixels[index];
-            const green = pixels[index + 1];
-            const blue = pixels[index + 2];
-            const isPeachBackground = red > 218 && green > 166 && blue > 145 && red > green && green >= blue && red - blue < 95;
-            const isSoftWall = red > 238 && green > 212 && blue > 202 && red >= green && green >= blue;
-
-            if (isPeachBackground || isSoftWall) {
-              pixels[index + 3] = 0;
+            function isBackgroundPixel(pixelIndex) {
+              const offset = pixelIndex * 4;
+              const red = pixels[offset];
+              const green = pixels[offset + 1];
+              const blue = pixels[offset + 2];
+              const warmWall = red > 214 && green > 158 && blue > 135 && red >= green && green >= blue && red - blue < 120;
+              const paleWall = red > 232 && green > 204 && blue > 194 && red >= green && green >= blue;
+              return warmWall || paleWall;
             }
-          }
 
-          mascotContext.putImageData(frame, 0, 0);
-          mascot.classList.add("has-canvas");
+            function pushIfBackground(x, y) {
+              if (x < 0 || y < 0 || x >= canvasWidth || y >= canvasHeight) {
+                return;
+              }
+
+              const pixelIndex = y * canvasWidth + x;
+
+              if (visited[pixelIndex] || !isBackgroundPixel(pixelIndex)) {
+                return;
+              }
+
+              visited[pixelIndex] = 1;
+              stack.push(pixelIndex);
+            }
+
+            for (let x = 0; x < canvasWidth; x += 1) {
+              pushIfBackground(x, 0);
+              pushIfBackground(x, canvasHeight - 1);
+            }
+
+            for (let y = 0; y < canvasHeight; y += 1) {
+              pushIfBackground(0, y);
+              pushIfBackground(canvasWidth - 1, y);
+            }
+
+            while (stack.length) {
+              const pixelIndex = stack.pop();
+              const x = pixelIndex % canvasWidth;
+              const y = Math.floor(pixelIndex / canvasWidth);
+              pixels[pixelIndex * 4 + 3] = 0;
+              pushIfBackground(x + 1, y);
+              pushIfBackground(x - 1, y);
+              pushIfBackground(x, y + 1);
+              pushIfBackground(x, y - 1);
+            }
+
+            mascotContext.putImageData(frame, 0, 0);
+            mascot.classList.add("has-canvas");
+          } catch (error) {
+            mascot.classList.remove("has-canvas");
+          }
           window.requestAnimationFrame(drawMascotFrame);
         }
 
