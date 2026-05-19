@@ -169,12 +169,44 @@
         padding: clamp(42px, 8vw, 96px) clamp(18px, 4vw, 54px);
         overflow: hidden;
         color: #fffaf3;
-        background:
-          linear-gradient(90deg, rgba(23, 16, 20, 0.9) 0%, rgba(125, 47, 97, 0.66) 45%, rgba(223, 120, 173, 0.18) 100%),
-          url("assets/instagram-1.jpg") center / cover;
+        background: var(--cocoa);
+        isolation: isolate;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(90deg, rgba(23, 16, 20, 0.9) 0%, rgba(125, 47, 97, 0.66) 45%, rgba(223, 120, 173, 0.18) 100%);
+        pointer-events: none;
+      }
+
+      .hero-slides {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(1.03);
+        transition: opacity 900ms ease, transform 5000ms ease;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+        transform: scale(1);
       }
 
       .hero-content {
+        position: relative;
+        z-index: 2;
         width: min(760px, 100%);
         padding-bottom: clamp(24px, 7vh, 74px);
       }
@@ -223,6 +255,7 @@
 
       .hero-facts {
         position: absolute;
+        z-index: 2;
         right: clamp(18px, 4vw, 54px);
         bottom: 26px;
         display: grid;
@@ -631,6 +664,13 @@
 
     <main id="top">
       <section class="hero" aria-label="Chez Gâteaux">
+        <div class="hero-slides" aria-hidden="true">
+          <img class="hero-slide active" src="assets/instagram-1.jpg" alt="">
+          <img class="hero-slide" src="assets/instagram-2.jpg" alt="">
+          <img class="hero-slide" src="assets/instagram-3.jpg" alt="">
+          <img class="hero-slide" src="assets/instagram-4.jpg" alt="">
+          <img class="hero-slide" src="assets/cake-hero.jpg" alt="">
+        </div>
         <div class="hero-content">
           <p class="eyebrow" data-i18n="hero.eyebrow">Tortas temáticas en Québec</p>
           <h1>Chez Gâteaux</h1>
@@ -1031,6 +1071,17 @@
       document.querySelectorAll("[data-lang]").forEach((button) => {
         button.addEventListener("click", () => setLanguage(button.getAttribute("data-lang")));
       });
+
+      const heroSlides = Array.from(document.querySelectorAll(".hero-slide"));
+      let activeHeroSlide = 0;
+
+      if (heroSlides.length > 1) {
+        window.setInterval(() => {
+          heroSlides[activeHeroSlide].classList.remove("active");
+          activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
+          heroSlides[activeHeroSlide].classList.add("active");
+        }, 5000);
+      }
     </script>
   </body>
 </html>
