@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="es">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chez Gâteaux | Tortas temáticas en Québec</title>
+    <title>Chez Gâteaux | Gâteaux thématiques à Québec</title>
     <meta
       name="description"
-      content="Chez Gâteaux en Québec crea tortas temáticas para toda ocasión. Cuéntanos tu idea por DM y la convertimos en un pastel personalizado."
+      content="Chez Gâteaux à Québec crée des gâteaux thématiques pour toutes les occasions. Envoyez votre idée par DM et nous la transformons en gâteau personnalisé."
     >
-    <meta property="og:title" content="Chez Gâteaux | Tortas temáticas en Québec">
+    <meta property="og:title" content="Chez Gâteaux | Gâteaux thématiques à Québec">
     <meta
       property="og:description"
-      content="Tortas temáticas para cumpleaños, celebraciones y momentos especiales. Pedidos por DM en Instagram."
+      content="Gâteaux thématiques pour anniversaires, célébrations et moments spéciaux. Commandes par DM sur Instagram."
     >
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/cake-hero.jpg">
@@ -940,8 +940,8 @@
         <a href="#infos" data-i18n="nav.info">Info</a>
       </nav>
       <div class="language-switch" aria-label="Language selector">
-        <button class="active" type="button" data-lang="es" aria-pressed="true">ES</button>
-        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        <button class="active" type="button" data-lang="fr" aria-pressed="true">FR</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
       <a class="button" href="https://www.instagram.com/chezgateaux/" data-i18n="cta.dm">Pedir por DM</a>
@@ -1372,6 +1372,8 @@
           button.setAttribute("aria-pressed", button.getAttribute("data-lang") === lang ? "true" : "false");
         });
       }
+
+      setLanguage("fr");
 
       document.querySelectorAll("[data-lang]").forEach((button) => {
         button.addEventListener("click", () => setLanguage(button.getAttribute("data-lang")));
