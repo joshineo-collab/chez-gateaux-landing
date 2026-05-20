@@ -201,17 +201,9 @@
         inset: 0;
         z-index: 0;
         overflow: hidden;
-        background: var(--hero-backdrop, url("assets/web-cake-01.jpg")) center / cover no-repeat;
-      }
-
-      .hero-slides::before {
-        content: "";
-        position: absolute;
-        inset: -32px;
-        background: inherit;
-        filter: blur(22px) saturate(1.08);
-        opacity: 0.72;
-        transform: scale(1.08);
+        background:
+          radial-gradient(circle at 72% 45%, rgba(223, 120, 173, 0.32), transparent 38%),
+          linear-gradient(135deg, #171014 0%, #562342 58%, #7d2f61 100%);
       }
 
       .hero-slide {
@@ -1271,15 +1263,10 @@
       let activeHeroSlide = 0;
 
       if (heroSlides.length > 1) {
-        const heroSlidesWrap = document.querySelector(".hero-slides");
-
         window.setInterval(() => {
           heroSlides[activeHeroSlide].classList.remove("active");
           activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
           heroSlides[activeHeroSlide].classList.add("active");
-          if (heroSlidesWrap) {
-            heroSlidesWrap.style.setProperty("--hero-backdrop", `url("${heroSlides[activeHeroSlide].getAttribute("src")}")`);
-          }
         }, 5000);
       }
 
