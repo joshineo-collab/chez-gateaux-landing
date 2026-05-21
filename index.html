@@ -527,6 +527,56 @@
         background: #fff8fc;
       }
 
+      .reviews-section {
+        background:
+          radial-gradient(circle at 84% 8%, rgba(216, 165, 52, 0.22), transparent 30%),
+          linear-gradient(180deg, #fff4fa 0%, #fffaf6 100%);
+      }
+
+      .review-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .review-card {
+        min-height: 240px;
+        display: grid;
+        align-content: space-between;
+        gap: 24px;
+        padding: 24px;
+        border: 1px solid rgba(125, 47, 97, 0.16);
+        border-radius: 8px;
+        background: rgba(255, 248, 252, 0.9);
+        box-shadow: 0 16px 42px rgba(125, 47, 97, 0.1);
+      }
+
+      .stars {
+        color: #b17710;
+        font-size: 1rem;
+        letter-spacing: 0;
+      }
+
+      .review-card blockquote {
+        margin: 0;
+        color: var(--cocoa);
+        font-family: "Baloo 2", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(1.45rem, 2.5vw, 2rem);
+        line-height: 1.08;
+      }
+
+      .review-card cite {
+        color: var(--muted);
+        font-style: normal;
+        font-weight: 800;
+      }
+
+      .review-source {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
       .instagram-feed {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -839,6 +889,7 @@
 
         .menu-grid,
         .info-grid,
+        .review-grid,
         .cake-showcase {
           grid-template-columns: 1fr;
         }
@@ -936,7 +987,8 @@
       <nav class="nav" aria-label="Main navigation">
         <a href="#menu" data-i18n="nav.menu">Menu</a>
         <a href="#instagram" data-i18n="nav.instagram">Redes</a>
-        <a href="#avis" data-i18n="nav.process">Proceso</a>
+        <a href="#avis-google" data-i18n="nav.reviews">Avis</a>
+        <a href="#process" data-i18n="nav.process">Proceso</a>
         <a href="#infos" data-i18n="nav.info">Info</a>
       </nav>
       <div class="language-switch" aria-label="Language selector">
@@ -1078,7 +1130,45 @@
         </div>
       </section>
 
-      <section class="split" id="avis">
+      <section class="reviews-section" id="avis-google">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow" style="color: var(--guava)" data-i18n="reviews.eyebrow">Opiniones de Google</p>
+              <h2 data-i18n="reviews.title">Comentarios que hacen que la gente vuelva.</h2>
+            </div>
+            <p class="lead" data-i18n="reviews.copy">
+              Una selección de reseñas públicas atribuidas a Google. Usamos frases cortas para mantener el bloque limpio y fácil de leer.
+            </p>
+          </div>
+
+          <div class="review-grid">
+            <article class="review-card">
+              <div class="stars" aria-label="5 estrellas">★★★★★</div>
+              <blockquote data-i18n="review1.quote">"Le meilleur tres leches en ville!"</blockquote>
+              <cite>Nitika Rajora</cite>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 estrellas">★★★★★</div>
+              <blockquote data-i18n="review2.quote">"Muy buenas las empanadas."</blockquote>
+              <cite>Camilo Pulido</cite>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 estrellas">★★★★★</div>
+              <blockquote data-i18n="review3.quote">"Petit bijoux cacher!"</blockquote>
+              <cite>J</cite>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 estrellas">★★★★★</div>
+              <blockquote data-i18n="review4.quote">"Excellent nourriture de notre pays."</blockquote>
+              <cite>Eislen Tarazona</cite>
+            </article>
+          </div>
+          <p class="review-source" data-i18n="reviews.source">Fuente: reseñas públicas de Google mostradas en Restaurant Guru y Resto en ligne.</p>
+        </div>
+      </section>
+
+      <section class="split" id="process">
         <div class="section-inner split-grid">
           <div class="photo-panel">
             <img
@@ -1174,6 +1264,7 @@
           metaDescription: "Chez Gâteaux en Québec crea tortas temáticas para toda ocasión. Cuéntanos tu idea por DM y la convertimos en un pastel personalizado.",
           "nav.menu": "Menu",
           "nav.instagram": "Redes",
+          "nav.reviews": "Opiniones",
           "nav.process": "Proceso",
           "nav.info": "Info",
           "cta.dm": "Pedir por DM",
@@ -1207,6 +1298,14 @@
           "instagram.eyebrow": "Redes",
           "instagram.title": "Últimos posts de Chez Gâteaux.",
           "instagram.copy": "Fotos recientes tomadas directamente del perfil de Instagram. Toca una foto para abrir el post.",
+          "reviews.eyebrow": "Opiniones de Google",
+          "reviews.title": "Comentarios que hacen que la gente vuelva.",
+          "reviews.copy": "Una selección de reseñas públicas atribuidas a Google. Usamos frases cortas para mantener el bloque limpio y fácil de leer.",
+          "review1.quote": "\"Le meilleur tres leches en ville!\"",
+          "review2.quote": "\"Muy buenas las empanadas.\"",
+          "review3.quote": "\"Petit bijoux cacher!\"",
+          "review4.quote": "\"Excellent nourriture de notre pays.\"",
+          "reviews.source": "Fuente: reseñas públicas de Google mostradas en Restaurant Guru y Resto en ligne.",
           "process.eyebrow": "Cómo funciona",
           "process.title": "Envía tu idea, confirma los detalles y recibe una torta hecha para tu ocasión.",
           "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
@@ -1235,6 +1334,7 @@
           metaDescription: "Chez Gâteaux à Québec crée des gâteaux thématiques pour toutes les occasions. Envoyez votre idée par DM et nous la transformons en gâteau personnalisé.",
           "nav.menu": "Menu",
           "nav.instagram": "Réseaux",
+          "nav.reviews": "Avis",
           "nav.process": "Processus",
           "nav.info": "Infos",
           "cta.dm": "Commander par DM",
@@ -1268,6 +1368,14 @@
           "instagram.eyebrow": "Réseaux",
           "instagram.title": "Les derniers posts de Chez Gâteaux.",
           "instagram.copy": "Photos récentes prises directement du profil Instagram. Touchez une photo pour ouvrir le post.",
+          "reviews.eyebrow": "Avis Google",
+          "reviews.title": "Les mots qui donnent envie de revenir.",
+          "reviews.copy": "Une sélection de courts extraits d'avis publics attribués à Google, présentés simplement pour faciliter la lecture.",
+          "review1.quote": "\"Le meilleur tres leches en ville!\"",
+          "review2.quote": "\"Muy buenas las empanadas.\"",
+          "review3.quote": "\"Petit bijoux cacher!\"",
+          "review4.quote": "\"Excellent nourriture de notre pays.\"",
+          "reviews.source": "Source: avis publics Google affichés sur Restaurant Guru et Resto en ligne.",
           "process.eyebrow": "Comment ça marche",
           "process.title": "Envoyez votre idée, confirmez les détails et recevez un gâteau fait pour votre occasion.",
           "process.quote": "\"Dites-nous votre idée, nous la réalisons.\"",
@@ -1296,6 +1404,7 @@
           metaDescription: "Chez Gâteaux in Québec creates custom themed cakes for every occasion. Send your idea by DM and turn it into a personalized cake.",
           "nav.menu": "Menu",
           "nav.instagram": "Social",
+          "nav.reviews": "Reviews",
           "nav.process": "Process",
           "nav.info": "Info",
           "cta.dm": "Order by DM",
@@ -1329,6 +1438,14 @@
           "instagram.eyebrow": "Social",
           "instagram.title": "Latest posts from Chez Gâteaux.",
           "instagram.copy": "Recent photos pulled directly from the Instagram profile. Tap a photo to open the post.",
+          "reviews.eyebrow": "Google reviews",
+          "reviews.title": "The comments that bring people back.",
+          "reviews.copy": "A selection of short public review excerpts attributed to Google, kept brief so the section stays easy to scan.",
+          "review1.quote": "\"Le meilleur tres leches en ville!\"",
+          "review2.quote": "\"Muy buenas las empanadas.\"",
+          "review3.quote": "\"Petit bijoux cacher!\"",
+          "review4.quote": "\"Excellent nourriture de notre pays.\"",
+          "reviews.source": "Source: public Google reviews shown on Restaurant Guru and Resto en ligne.",
           "process.eyebrow": "How it works",
           "process.title": "Send your idea, confirm the details, and receive a cake made for your occasion.",
           "process.quote": "\"Tell us your idea, we make it real.\"",
